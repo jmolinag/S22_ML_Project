@@ -36,11 +36,11 @@ def extract_features(directory):
 		print('>%s' % name)
 	return features
 
-'''python
+#'''python
 # extract features from all images
 directory = 'Flickr8k_Dataset\Flicker8k_Dataset'
 features = extract_features(directory)
 print('Extracted Features: %d' % len(features))
 # save to file
 dump(features, open('features.pkl', 'wb'))
-'''
+#'''

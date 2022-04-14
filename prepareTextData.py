@@ -76,7 +76,7 @@ def save_descriptions(descriptions, filename):
 	file.write(data)
 	file.close()
 
-'''python
+#'''python
 filename = 'Flickr8k_text/Flickr8k.token.txt'
 # load descriptions
 doc = load_doc(filename)
@@ -90,4 +90,4 @@ vocabulary = to_vocabulary(descriptions)
 print('Vocabulary Size: %d' % len(vocabulary))
 # save to file
 save_descriptions(descriptions, 'descriptions.txt')
-'''
+#'''
