@@ -1,0 +1,4 @@
+#ignore PKL
+*.pkl
+Flickr8k_Dataset/
+
