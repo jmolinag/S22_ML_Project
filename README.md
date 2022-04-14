@@ -1,7 +1,7 @@
 # S22_ML_Project
-Image caption generation ML project DCSI 525
+Image caption generation ML project DCSI 525\n
 
-Authors:
+Authors:\n
 
 Peter Kohler, CSM Robotics Dept., pmkohler@mines.edu
 Jose Molina-Galeano, CSM Petroleum Engineering Dept., jmolinag@mines.edu
