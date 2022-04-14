@@ -94,24 +94,26 @@ def max_length(descriptions):
 
 
 # create sequences of images, input sequences and output words for an image
-def create_sequences(tokenizer, max_length, desc_list, photo, vocab_size):
+def create_sequences(tokenizer, max_length, descriptions, photos, vocab_size):
     X1, X2, y = list(), list(), list()
-    # walk through each description for the image
-    for desc in desc_list:
-        # encode the sequence
-        seq = tokenizer.texts_to_sequences([desc])[0]
-        # split one sequence into multiple X,y pairs
-        for i in range(1, len(seq)):
-            # split into input and output pair
-            in_seq, out_seq = seq[:i], seq[i]
-            # pad input sequence
-            in_seq = pad_sequences([in_seq], maxlen=max_length)[0]
-            # encode output sequence
-            out_seq = to_categorical([out_seq], num_classes=vocab_size)[0]
-            # store
-            X1.append(photo)
-            X2.append(in_seq)
-            y.append(out_seq)
+    # walk through each image identifier
+    for key, desc_list in descriptions.items():
+        # walk through each description for the image
+        for desc in desc_list:
+            # encode the sequence
+            seq = tokenizer.texts_to_sequences([desc])[0]
+            # split one sequence into multiple X,y pairs
+            for i in range(1, len(seq)):
+                # split into input and output pair
+                in_seq, out_seq = seq[:i], seq[i]
+                # pad input sequence
+                in_seq = pad_sequences([in_seq], maxlen=max_length)[0]
+                # encode output sequence
+                out_seq = to_categorical([out_seq], num_classes=vocab_size)[0]
+                # store
+                X1.append(photos[key][0])
+                X2.append(in_seq)
+                y.append(out_seq)
     return array(X1), array(X2), array(y)
 
 
@@ -132,24 +134,14 @@ def define_model(vocab_size, max_length):
     outputs = Dense(vocab_size, activation='softmax')(decoder2)
     # tie it together [image, seq] [word]
     model = Model(inputs=[inputs1, inputs2], outputs=outputs)
-    # compile model
     model.compile(loss='categorical_crossentropy', optimizer='adam')
     # summarize model
-    model.summary()
+    print(model.summary())
     plot_model(model, to_file='model.png', show_shapes=True)
     return model
 
 
-# data generator, intended to be used in a call to model.fit_generator()
-def data_generator(descriptions, photos, tokenizer, max_length, vocab_size):
-    # loop for ever over images
-    while 1:
-        for key, desc_list in descriptions.items():
-            # retrieve the photo feature
-            photo = photos[key][0]
-            in_img, in_seq, out_word = create_sequences(tokenizer, max_length, desc_list, photo, vocab_size)
-            yield [in_img, in_seq], out_word
-
+# train dataset
 
 # load training dataset (6K)
 filename = 'Flickr8k_text/Flickr_8k.trainImages.txt'
@@ -168,16 +160,31 @@ print('Vocabulary Size: %d' % vocab_size)
 # determine the maximum sequence length
 max_length = max_length(train_descriptions)
 print('Description Length: %d' % max_length)
+# prepare sequences
+X1train, X2train, ytrain = create_sequences(tokenizer, max_length, train_descriptions, train_features, vocab_size)
+
+# dev dataset
+
+# load test set
+filename = 'Flickr8k_text/Flickr_8k.devImages.txt'
+test = load_set(filename)
+print('Dataset: %d' % len(test))
+# descriptions
+test_descriptions = load_clean_descriptions('descriptions.txt', test)
+print('Descriptions: test=%d' % len(test_descriptions))
+# photo features
+test_features = load_photo_features('features.pkl', test)
+print('Photos: test=%d' % len(test_features))
+# prepare sequences
+X1test, X2test, ytest = create_sequences(tokenizer, max_length, test_descriptions, test_features, vocab_size)
+
+# fit model
 
 # define the model
 model = define_model(vocab_size, max_length)
-# train the model, run epochs manually and save after each epoch
-epochs = 20
-steps = len(train_descriptions)
-for i in range(epochs):
-    # create the data generator
-    generator = data_generator(train_descriptions, train_features, tokenizer, max_length, vocab_size)
-    # fit for one epoch
-    model.fit_generator(generator, epochs=1, steps_per_epoch=steps, verbose=1)
-    # save model
-    model.save('model_' + str(i) + '.h5')
+# define checkpoint callback
+filepath = 'model-ep{epoch:03d}-loss{loss:.3f}-val_loss{val_loss:.3f}.h5'
+checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
+# fit model
+model.fit([X1train, X2train], ytrain, epochs=2, verbose=2, callbacks=[checkpoint],
+          validation_data=([X1test, X2test], ytest))

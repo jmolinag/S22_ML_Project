@@ -58,7 +58,7 @@ def load_photo_features(filename, dataset):
 	return features
 
 
-'''# load training dataset (6K)
+# load training dataset (6K)
 filename = 'Flickr8k_text/Flickr_8k.trainImages.txt'
 train = load_set(filename)
 print('Dataset: %d' % len(train))
@@ -68,4 +68,3 @@ print('Descriptions: train=%d' % len(train_descriptions))
 # photo features
 train_features = load_photo_features('features.pkl', train)
 print('Photos: train=%d' % len(train_features))
-'''
