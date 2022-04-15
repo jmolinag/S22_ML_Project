@@ -4,6 +4,7 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import load_model
 from nltk.translate.bleu_score import corpus_bleu
+import os
 
 
 # load doc into memory
@@ -169,7 +170,7 @@ test_features = load_photo_features('features.pkl', test)
 print('Photos: test=%d' % len(test_features))
 
 # load the model
-filename = 'model-ep002-loss3.245-val_loss3.612.h5'
+filename = 'model-ep001-loss4.512-val_loss4.127.h5'
 model = load_model(filename)
 # evaluate model
 evaluate_model(model, test_descriptions, test_features, tokenizer, max_length)
