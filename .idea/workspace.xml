@@ -32,8 +32,11 @@
   <component name="ChangeListManager">
     <list default="true" id="0c0891fb-658c-403d-8cf9-703351497df5" name="Default Changelist" comment="Ignored Files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/defineFitModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/defineFitModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evaluateModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluateModel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/example.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generateNewCaptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/generateNewCaptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model-ep001-loss4.512-val_loss4.127.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/model-ep003-loss3.688-val_loss3.855.h5" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +68,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$/anaconda3/envs/S22_ML_Project2" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.defineFitModel">
+  <component name="RunManager" selected="Python.generateNewCaptions">
     <configuration name="defineFitModel" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="S22_ML_Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -129,27 +132,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="preparePhotoData" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="S22_ML_Project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/preparePhotoData.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="prepareTextData" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="S22_ML_Project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -171,13 +153,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="tokenizer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="S22_ML_Project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tokenizer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.defineFitModel" />
         <item itemvalue="Python.generateNewCaptions" />
+        <item itemvalue="Python.tokenizer" />
         <item itemvalue="Python.evaluateModel" />
+        <item itemvalue="Python.defineFitModel" />
         <item itemvalue="Python.prepareTextData" />
-        <item itemvalue="Python.preparePhotoData" />
       </list>
     </recent_temporary>
   </component>
@@ -231,26 +234,26 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1104" y="332" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1649990670744" />
-    <state width="3419" height="273" key="GridCell.Tab.0.bottom" timestamp="1650045223734">
+    <state width="1241" height="273" key="GridCell.Tab.0.bottom" timestamp="1650136158590">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1899" height="273" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1649975472846" />
-    <state width="3419" height="273" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1650045223734" />
-    <state width="3419" height="273" key="GridCell.Tab.0.center" timestamp="1650045223734">
+    <state width="1241" height="273" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1650136158590" />
+    <state width="1241" height="273" key="GridCell.Tab.0.center" timestamp="1650136158590">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1899" height="273" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1649975472846" />
-    <state width="3419" height="273" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1650045223734" />
-    <state width="3419" height="273" key="GridCell.Tab.0.left" timestamp="1650045223734">
+    <state width="1241" height="273" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1650136158590" />
+    <state width="1241" height="273" key="GridCell.Tab.0.left" timestamp="1650136158590">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1899" height="273" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1649975472846" />
-    <state width="3419" height="273" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1650045223734" />
-    <state width="3419" height="273" key="GridCell.Tab.0.right" timestamp="1650045223734">
+    <state width="1241" height="273" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1650136158590" />
+    <state width="1241" height="273" key="GridCell.Tab.0.right" timestamp="1650136158590">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="1899" height="273" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1649975472846" />
-    <state width="3419" height="273" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1650045223734" />
+    <state width="1241" height="273" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1650136158590" />
     <state width="1696" height="488" key="GridCell.Tab.1.bottom" timestamp="1649955988246">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
